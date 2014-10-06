@@ -24,16 +24,15 @@
 					<h3>Top Terms</h3>
 					<ol>
 						<li ng-repeat="term in topTerms">
-							{{ term.name }} <span class="badge pull-right">{{ term.count }}</span>			
+							{{ term[0] }} <span class="badge pull-right">{{ term[1] }}</span>			
 						</li>
 					</ol>
 				</div>
 			</div>
 		</div>
 
-
-    <script src="angular/angular.js"></script>
-    <script src="jquery/dist/jquery.js"></script>
+		<script src="angular/angular.js"></script>
+		<script src="jquery/dist/jquery.js"></script>
 		<script src="bootstrap/dist/js/bootstrap.js"></script>
 		<script type="text/javascript" src="app.js"></script>
 	</body>
