@@ -10,13 +10,31 @@
 					<h1>Top Terms</h1>
 				</div>
 			</div>			
+			<div class="row">
+				<div class="col-lg-9">
+					<h3>Stream</h3>
+					<div class="well twitter-stream" ng-controller="TwitterStream">
+						{{ topTerms }}
+						<ul class="list-inline">
+							<li ng-repeat="status in statuses">{{ status }}</li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-3" ng-controller="TopTerms">
+					<h3>Top Terms</h3>
+					<ol>
+						<li ng-repeat="term in topTerms">
+							{{ term.name }} <span class="badge pull-right">{{ term.count }}</span>			
+						</li>
+					</ol>
+				</div>
+			</div>
 		</div>
+
 
     <script src="angular/angular.js"></script>
     <script src="jquery/dist/jquery.js"></script>
 		<script src="bootstrap/dist/js/bootstrap.js"></script>
-		<script>
-			var app = angular.module('topTerms', []);
-		</script>
+		<script type="text/javascript" src="app.js"></script>
 	</body>
 </html>
