@@ -1,0 +1,15 @@
+{
+  "name": "topterms",
+  "version": "0.0.0",
+  "description": "An app to calculate the top ten terms from a Twitter stream.",
+  "main": "server.js",
+  "scripts": {
+		"build": "npm install && bower install",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Khalid Harun <khalid.harun@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.9.5"
+  }
+}
