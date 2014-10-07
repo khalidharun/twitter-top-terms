@@ -5,6 +5,9 @@ var _ = require('underscore'),
  events  = require('events'),
  util    = require("util");
 
+// additional stopwords
+stopwords = stopwords.contact(['http']);
+
 var TopTerms = function() {
   this.allTerms = {};
   this.statusBuffer = [];
@@ -24,23 +27,13 @@ TopTerms.prototype.reset = function() {
 
 // Top Terms Logic
 TopTerms.prototype.getTopTerms = function() {
-  //console.log('returning top terms.');
-
   var counter = _.pairs(this.allTerms);
-  //console.log("Counter", counter);
-
   var sorted = _.sortBy(counter, function(item) {return -item[1];});
-  //console.log("sorted", sorted);
-
   var topTen = sorted.slice(0,10);
-  //console.log("topTen", topTen);
-
-  // return topTen
   return topTen;
 }
 
 TopTerms.prototype.getLatestStatuses = function() {
-  console.log('returning statuses.');
   var latestStatuses = this.statusBuffer;
   this.statusBuffer = [];
   return latestStatuses;
@@ -60,9 +53,8 @@ TopTerms.prototype.updateTopTerms = function() {
 
 var statusCounter = 0;
 TopTerms.prototype.processStatus = function(status) {
-
+  status = status.trim();
   console.log(statusCounter++, status);
-
   var words = status.toLowerCase().match(/[\w]+/g); //.split(/\W/);
   if(!words) return;
 
@@ -78,8 +70,6 @@ TopTerms.prototype.processStatus = function(status) {
 
   // Push onto statuses buffer
   this.statusBuffer.push(status);
-
-  //console.log("allTerms", this.allTerms);
 }
 
 // Twitter Stream
