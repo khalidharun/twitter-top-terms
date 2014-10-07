@@ -13,9 +13,9 @@ var TopTerms = function() {
   this.allTerms = {};
   this.statusBuffer = [];
   this.topTerms = [];
-
-//  events.EventEmitter.call(this);
 };
+
+// Top Terms Logic
 
 TopTerms.prototype.reset = function() {
   this.allTerms = {};
@@ -23,10 +23,6 @@ TopTerms.prototype.reset = function() {
   this.topTerms = [];
 };
 
-// Make TopTerms capable of emitting events
-//util.inherits(TopTerms, events.EventEmitter);
-
-// Top Terms Logic
 TopTerms.prototype.getTopTerms = function() {
   var counter = _.pairs(this.allTerms);
   var sorted = _.sortBy(counter, function(item) {return -item[1];});
@@ -76,6 +72,13 @@ TopTerms.prototype.processStatus = function(status) {
 
 // Twitter Stream
 
+var geoLocations = {
+    chicago: '-88,41,-87,42', // Chicago
+    chicagoland:  '-90,40,-85,43', // Chicagoland
+    us: '-125, 24, -66, 50', // US
+    world: '-180,-90,180,90' // Any geotagged tweet
+};
+
 TopTerms.prototype.startStream = function(options) {
   var self = this;
   var counter = 0;
@@ -84,10 +87,7 @@ TopTerms.prototype.startStream = function(options) {
     self.stream = new Stream(options);
 
     var params = {
-      //locations: '-88,41,-87,42' // Chicago
-      //locations: '-90,40,-85,43' // Chicagoland
-      //locations: '-125, 24, -66, 50' // US
-      locations: '-180,-90,180,90' // Any geotagged tweet
+      locations: geoLocations['us']
     };
 
     var endpoint = 'https://stream.twitter.com/1.1/statuses/filter.json';

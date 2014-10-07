@@ -24,14 +24,8 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-lg-9"  ng-controller="TwitterStream">
-					<h3>Status Stream <span class="badge pull-right">Tweets Processed: {{ statuses.length }}</span></h3>
-					<div class="well twitter-stream">
-						{{ topTerms }}
-						<span ng-repeat="status in statuses track by $index" class="status"> {{ status }}</span>
-					</div>
-				</div>
-				<div class="col-lg-3" ng-controller="TopTerms">
+
+				<div class="col-md-3" ng-controller="TopTerms">
 					<h3>Top Terms</h3>
 					<div class="well">
 						<ol>
@@ -41,6 +35,15 @@
 						</ol>						
 					</div>
 				</div>
+
+				<div class="col-md-9"  ng-controller="TwitterStream">
+					<h3>Status Stream <span class="badge pull-right">Tweets Processed: {{ statuses.length }}</span></h3>
+					<div class="well twitter-stream">
+						{{ topTerms }}
+						<span ng-repeat="status in statuses track by $index" class="status"> {{ status }}</span>
+					</div>
+				</div>
+
 			</div>
 		</div>
 		<script src="angular/angular.js"></script>
