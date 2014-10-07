@@ -1,12 +1,12 @@
 # twitter-top-terms
 
-Tabulates the top terms form a Twitter Stream.  This app is build with AngularJS and nodejs.n
-
+Tabulates the top terms form a Twitter Stream.  This app is build with AngularJS and Node.js.
 
 ## Installation
 
 ```
-git clone https://github.com/khalidharun/twitter-top-terms.git && cd $_
+git clone https://github.com/khalidharun/twitter-top-terms.git
+cd twitter-top-terms
 npm install
 bower install
 ```
