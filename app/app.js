@@ -81,14 +81,6 @@ app.controller('Timer', ['$scope', '$http', function($scope, $http) {
     });
   };
 
-  $scope.startStop = function() {
-    if (!$scope.timeout) {
-      $scope.start();
-    } else {
-      $scope.stop();
-    }
-  };
-
   $scope.reset = function() {
     // Stop
     $scope.stop();
