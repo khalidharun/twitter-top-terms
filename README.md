@@ -9,6 +9,7 @@ git clone https://github.com/khalidharun/twitter-top-terms.git
 cd twitter-top-terms
 npm install
 bower install
+
 ```
 
 ## Configuration
