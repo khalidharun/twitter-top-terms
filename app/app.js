@@ -1,4 +1,4 @@
-var app = angular.module('topTerms', []);
+var app = angular.module('app', []);
 
 app.controller('TwitterStream', ['$scope', '$http', function($scope, $http) {
 
@@ -10,8 +10,6 @@ app.controller('TwitterStream', ['$scope', '$http', function($scope, $http) {
     $http.get('/api/statuses').then(function(result) {
       // Success
       $scope.statuses = $scope.statuses.concat(result.data);
-      //console.log('result.data', result.data);
-      //console.log('statuses', $scope.statuses);
     }, function(reason) {
       // Error
       console.error('ERROR', reason);
