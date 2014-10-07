@@ -52,7 +52,7 @@ app.controller('TopTerms', ['$scope', '$http', function($scope, $http) {
 }]);
 
 app.controller('Timer', ['$scope', '$http', function($scope, $http) {
-  $scope.duration = 60*1000; // in ms
+  $scope.duration = 5*60*1000; // in ms
 
   $scope.start = function() {
     $http.get('/api/start').then(function(result) {
