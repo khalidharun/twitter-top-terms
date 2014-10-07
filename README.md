@@ -15,10 +15,17 @@ Tabulates the top terms form a Twitter Stream.  This app is build with AngularJS
 
 ### `npm run test-server`
 
-backend tests are run using jasmine-node.  This is a simple test to make sure the logic of calculating the top terms is correct.
+Runs unit tests for the backend are run using jasmine-node.  It runs server/topTerms_spec.js, which tests to make sure the logic of calculating the top terms is correct.
+
+### `npm run watch-server`
+
+Runs server test upon changes in server-side code.
 
 ### `npm run test-client`
 
 The client side code test are run using Karma.  These test make sure the AngularJS controllers logic is correct.
 
+### `npm run watch-client`
+
+Runs client side tests upon changes in the client-side code.
 
