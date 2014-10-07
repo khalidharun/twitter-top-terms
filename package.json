@@ -13,8 +13,7 @@
     "express": "^4.9.5",
     "stopwords": "0.0.4",
     "twitter-stream": "git+https://github.com/khalidharun/twitter-stream.git",
-    "underscore": "^1.7.0",
-    "user-stream": "git+https://github.com/khalidharun/twitter-stream.git"
+    "underscore": "^1.7.0"
   },
   "devDependencies": {
     "faker": "git+https://github.com/Marak/faker.js.git",
