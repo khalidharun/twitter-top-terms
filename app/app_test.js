@@ -100,6 +100,10 @@ describe("app module: ", function() {
           $scope: scope
         });
       };
+
+      httpBackend.expectGET('/api/stop').respond(200);
+      httpBackend.expectGET('/api/reset').respond(200);
+
     }));
 
     afterEach(function() {
@@ -109,6 +113,7 @@ describe("app module: ", function() {
 
     it("should be defined", function() {
       var controller = createController();
+      httpBackend.flush();
       expect(controller).toBeDefined();
     });
 
@@ -125,7 +130,6 @@ describe("app module: ", function() {
 
     it("should start", function() {
       var controller = createController();
-
       httpBackend.expectGET('/api/start').respond(200);
 
       scope.$apply(function() {
@@ -134,5 +138,18 @@ describe("app module: ", function() {
 
       httpBackend.flush();
     });
+
+    it("should reset", function() {
+      var controller = createController();
+      httpBackend.expectGET('/api/stop').respond(200);
+      httpBackend.expectGET('/api/reset').respond(200);
+
+      scope.$apply(function() {
+        scope.reset();
+      });
+
+      httpBackend.flush();
+    });
+
   });
 });

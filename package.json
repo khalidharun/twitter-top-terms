@@ -5,7 +5,10 @@
   "scripts": {
 		"start": "node server/server.js",
     "build": "npm install && bower install",
-    "test": "jasmine-node server"
+    "test-server": "jasmine-node server",
+		"test-client": "karma start --single-run",
+		"watch-client": "karma start",
+		"watch-server": "jasmine-node server --autotest --watch server"
   },
   "author": "Khalid Harun <khalid.harun@gmail.com>",
   "license": "MIT",

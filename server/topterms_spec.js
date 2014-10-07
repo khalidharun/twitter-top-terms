@@ -39,6 +39,8 @@ describe("TopTerms", function() {
 
     var topTerms;
     var status = "lorem ipsum ipsum dolor dolor dolor";
+    var allTermsTest = {lorem: 1, ipsum: 2, dolor: 3};
+    var topTermsTest = [['dolor', 3], ['ipsum', 2], ['lorem', 1]];
 
     beforeEach(function() {
       topTerms = new TopTerms();
@@ -46,7 +48,7 @@ describe("TopTerms", function() {
     });
 
     it( "should have accumlated in allTerms", function() {
-      expect(topTerms.allTerms).toEqual({lorem: 1, ipsum: 2, dolor: 3});
+      expect(topTerms.allTerms).toEqual(allTermsTest);
     });
 
     it ("should have add to statusBuffer", function() {
@@ -54,9 +56,18 @@ describe("TopTerms", function() {
     });
 
     it ("should have the correct topTerm", function() {
-      expect(topTerms.getTopTerms()).toEqual([['dolor', 3], ['ipsum', 2], ['lorem', 1]]);
+      expect(topTerms.getTopTerms()).toEqual(topTermsTest);
     });
 
+
+    it("should skip stop words", function() {
+      topTerms = new TopTerms();
+      var statusPlus = status + ' http';
+      topTerms.processStatus(statusPlus)
+
+      expect(topTerms.statusBuffer).toEqual([statusPlus]);
+      expect(topTerms.getTopTerms()).toEqual(topTermsTest);
+    });
 
     describe( "and when getLatestStatus is called", function() {
       var latestStatuses;
