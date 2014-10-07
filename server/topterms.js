@@ -1,12 +1,13 @@
 var _ = require('underscore'),
  faker = require('faker'),
  Stream = require('twitter-stream'),
- stopwords = require('stopwords').english,
+ StopWords = require('stopwords'),
  events  = require('events'),
  util    = require("util");
 
 // additional stopwords
-stopwords = stopwords.contact(['http']);
+var customStopWords = ['http', 'https', 'amp', "i'm", "we're", 'lol', "it's", "don't"];
+var stopwords = _.union(StopWords.english, StopWords.spanish, customStopWords);
 
 var TopTerms = function() {
   this.allTerms = {};
@@ -52,10 +53,11 @@ TopTerms.prototype.updateTopTerms = function() {
 };
 
 var statusCounter = 0;
+var statusFilter = /[\w\u00C0-\u04ff']{3,}/g;
 TopTerms.prototype.processStatus = function(status) {
   status = status.trim();
   console.log(statusCounter++, status);
-  var words = status.toLowerCase().match(/[\w]+/g); //.split(/\W/);
+  var words = status.toLowerCase().match(statusFilter); //.split(/\W/);
   if(!words) return;
 
   var allTerms = this.allTerms;
@@ -82,8 +84,10 @@ TopTerms.prototype.startStream = function(options) {
     self.stream = new Stream(options);
 
     var params = {
-      //locations: '-88,41,-87,42' // Chicagoland area
-      locations: '-90,40,-85,43' // Chicagoland area
+      //locations: '-88,41,-87,42' // Chicago
+      //locations: '-90,40,-85,43' // Chicagoland
+      //locations: '-125, 24, -66, 50' // US
+      locations: '-180,-90,180,90' // Any geotagged tweet
     };
 
     var endpoint = 'https://stream.twitter.com/1.1/statuses/filter.json';
