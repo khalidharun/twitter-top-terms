@@ -1,21 +1,9 @@
-h1. twitter-top-terms
+twitter-top-terms
 =================
 
-h2. Install
+Instructions
 -----------
-
-To install node and bower dependencies, run `npm run-script build`
-
-
-h2. Start Server
-----------------
-
-Start server by calling `npm start` and open browser to http://localhost:9000
-
-
-h2. Testing
------------
-
-To test server call `npm test`
-
-
+1. Install dependencies: `npm run-script build`
+1. Configuration: Copying config-example.js into config.js and enter your Twitter API credentials
+1. Start Server: `npm start`
+1. Run Tests: `npm test`
