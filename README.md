@@ -3,13 +3,34 @@
 Tabulates the top terms form a Twitter Stream.  This app is build with AngularJS and nodejs.n
 
 
-## Instructions
+## Installation
 
-*Step 1.* Configuration: Copying config-example.js into config.js and replace with your Twitter API credentials
+```
+git clone https://github.com/khalidharun/twitter-top-terms.git && cd $_
+npm install
+bower install
+```
 
-*Step 2.* Start Server: `npm start`
+## Configuration
 
-*Step 3.* Open app on browser: http://localhost:9000
+In order for this Twitter stream to function, you will need a Twitter API keys.  Make a config.js in the main directory based on config-example.js and fill it in with your API keys.
+
+``` javascript
+var config = {
+  consumer_key: 'XXXXXXX',
+  consumer_secret: 'YYYYYYY',
+  access_token_key: 'XXXXXXX',
+  access_token_secret: 'YYYYYYYY'
+};
+
+module.exports = config;
+```
+
+## Run
+
+### `npm start`
+
+App will be accessable through your brower at http://localhost:9000
 
 ## Tests
 
