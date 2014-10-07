@@ -1,25 +1,24 @@
-twitter-top-terms
-=================
+# twitter-top-terms
 
-Instructions
------------
-1. Install dependencies: `npm run-script build`
-1. Configuration: Copying config-example.js into config.js and enter your Twitter API credentials
-1. Run Tests: `npm test`
-1. Start Server: `npm start`
-1. Open app on browser: http://localhost:9000
+Tabulates the top terms form a Twitter Stream.  This app is build with AngularJS and nodejs.n
 
-Tests
-------
 
-`npm run test-server'
----------------------
+## Instructions
+
+*Step 1.* Configuration: Copying config-example.js into config.js and replace with your Twitter API credentials
+
+*Step 2.* Start Server: `npm start`
+
+*Step 3.* Open app on browser: http://localhost:9000
+
+## Tests
+
+### `npm run test-server`
 
 backend tests are run using jasmine-node.  This is a simple test to make sure the logic of calculating the top terms is correct.
 
+### `npm run test-client`
 
-`npm run test-client'
----------------------
 The client side code test are run using Karma.  These test make sure the AngularJS controllers logic is correct.
 
 
