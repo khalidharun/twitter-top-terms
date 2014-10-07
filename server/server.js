@@ -2,7 +2,8 @@ var express = require('express');
 var app = express();
 var port = 9000;
 
-var topTerms = require('./topterms');
+var TopTerms = require('./topterms');
+var topTerms = new TopTerms();
 
 app.use(express.static('app'));
 app.use(express.static('bower_components'));
@@ -17,3 +18,5 @@ app.get('/api/statuses', function(req, res) {
 
 app.listen(port);
 console.log("Server started listening on http://localhost:"+ port);
+
+topTerms.startStream();

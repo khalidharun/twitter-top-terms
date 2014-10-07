@@ -2,8 +2,8 @@
   "name": "topterms",
   "version": "0.0.0",
   "description": "An app to calculate the top ten terms from a Twitter stream.",
-  "main": "server.js",
   "scripts": {
+		"start": "node server/server.js",
     "build": "npm install && bower install",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,9 +11,17 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.9.5",
-    "underscore": "^1.7.0"
+    "stopwords": "0.0.4",
+    "twitter-stream": "git+https://github.com/khalidharun/twitter-stream.git",
+    "underscore": "^1.7.0",
+    "user-stream": "git+https://github.com/khalidharun/twitter-stream.git"
   },
   "devDependencies": {
-    "faker": "git+https://github.com/Marak/faker.js.git"
+    "faker": "git+https://github.com/Marak/faker.js.git",
+    "karma": "^0.12.24",
+    "karma-chrome-launcher": "^0.1.5",
+    "karma-jasmine": "^0.1.5",
+    "karma-requirejs": "^0.2.2",
+    "requirejs": "^2.1.15"
   }
 }
