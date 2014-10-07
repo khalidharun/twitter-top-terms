@@ -1,5 +1,4 @@
 var _ = require('underscore'),
- config = require('./config'),
  faker = require('faker'),
  Stream = require('twitter-stream'),
  stopwords = require('stopwords').english,
@@ -11,11 +10,17 @@ var TopTerms = function() {
   this.statusBuffer = [];
   this.topTerms = [];
 
-  events.EventEmitter.call(this);
+//  events.EventEmitter.call(this);
+};
+
+TopTerms.prototype.reset = function() {
+  this.allTerms = {};
+  this.statusBuffer = [];
+  this.topTerms = [];
 };
 
 // Make TopTerms capable of emitting events
-util.inherits(TopTerms, events.EventEmitter);
+//util.inherits(TopTerms, events.EventEmitter);
 
 // Top Terms Logic
 TopTerms.prototype.getTopTerms = function() {
@@ -79,28 +84,36 @@ TopTerms.prototype.processStatus = function(status) {
 
 // Twitter Stream
 
-TopTerms.prototype.startStream = function() {
-  console.log('Starting Stream');
+TopTerms.prototype.startStream = function(options) {
   var self = this;
   var counter = 0;
-  self.stream = new Stream({
-    consumer_key: config.consumer_key,
-    consumer_secret: config.consumer_secret,
-    access_token_key: config.access_token_key,
-    access_token_secret: config.access_token_secret
+
+  if(!self.stream) {
+    self.stream = new Stream(options);
+
+    var params = {
+      //locations: '-88,41,-87,42' // Chicagoland area
+      locations: '-90,40,-85,43' // Chicagoland area
+    };
+
+    var endpoint = 'https://stream.twitter.com/1.1/statuses/filter.json';
+    self.stream.stream(params, endpoint);
+  }
+
+  self.stream.on('error', function(err) {
+    console.error('ERROR', err);
   });
-
-  var params = {
-    locations: '-88,41,-87,42' // Chicagoland area
-  };
-
-  var endpoint = 'https://stream.twitter.com/1.1/statuses/filter.json';
-  self.stream.stream(params, endpoint);
 
   self.stream.on('data', function(json) {
     if (!json.hasOwnProperty('text')) return; // Get rid of updates without text
     self.processStatus(json.text);
   });
+};
+
+TopTerms.prototype.stopStream = function() {
+  if( !this.stream) return;
+
+  this.stream.removeAllListeners('data');
 };
 
 module.exports = TopTerms;

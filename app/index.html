@@ -2,6 +2,7 @@
   <head>
 		<title>Top Terms</title>
     <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.css" />
+		<link rel="stylesheet" href="app.css" />
 	</head>
 	<body>
 		<div class="container">
@@ -10,14 +11,24 @@
 					<h1>Top Terms</h1>
 				</div>
 			</div>			
+			<div class="row" ng-controller="Timer">
+				<div class="col-xs-4 col-md-3">
+					<button class="btn btn-block btn-primary" ng-show="!timeout" ng-click="start()">Start</button>
+					<button class="btn btn-block btn-default" ng-show="timeout" ng-click="stop()">Stop</button>
+				</div>
+				<div class="col-xs-4 col-md-3">
+					Time Elapsed: {{ timeElapsed()|number:0 }} seconds.
+				</div>
+				<div class="col-xs-4 col-md-3">
+					<button class="btn btn-danger btn-block" ng-click="reset()">Reset</button>
+				</div>
+			</div>
 			<div class="row">
 				<div class="col-lg-9">
 					<h3>Stream</h3>
 					<div class="well twitter-stream" ng-controller="TwitterStream">
 						{{ topTerms }}
-						<ul class="list-inline">
-							<li ng-repeat="status in statuses">{{ status }}</li>
-						</ul>
+						<span ng-repeat="status in statuses" class="status"> {{ status }}</span>
 					</div>
 				</div>
 				<div class="col-lg-3" ng-controller="TopTerms">
