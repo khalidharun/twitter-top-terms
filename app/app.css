@@ -1,3 +1,8 @@
 .status:hover {
 		background-color: orange;
 }
+
+.twitter-stream {
+		max-height: 600px;
+		overflow-y: scroll;
+}

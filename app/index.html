@@ -1,6 +1,6 @@
 <html ng-app="topTerms">
   <head>
-		<title>Top Terms</title>
+		<title>Twitter Top Terms by Khalid Harun</title>
     <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.css" />
 		<link rel="stylesheet" href="app.css" />
 	</head>
@@ -8,13 +8,13 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
-					<h1>Top Terms</h1>
+					<h1>Twitter Top Terms</h1>
 				</div>
 			</div>			
 			<div class="row" ng-controller="Timer">
 				<div class="col-xs-4 col-md-3">
-					<button class="btn btn-block btn-primary" ng-show="!timeout" ng-click="start()">Start</button>
-					<button class="btn btn-block btn-default" ng-show="timeout" ng-click="stop()">Stop</button>
+					<button class="btn btn-block btn-primary" ng-show="!timeout" ng-click="reset(); start()">Start</button>
+					<button class="btn btn-block btn-info" ng-show="timeout" ng-click="stop()">Stop</button>
 				</div>
 				<div class="col-xs-4 col-md-3">
 					Time Elapsed: {{ timeElapsed()|number:0 }} seconds.
@@ -24,24 +24,25 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-lg-9">
-					<h3>Stream</h3>
-					<div class="well twitter-stream" ng-controller="TwitterStream">
+				<div class="col-lg-9"  ng-controller="TwitterStream">
+					<h3>Status Stream <span class="badge pull-right">Tweets Processed: {{ statuses.length }}</span></h3>
+					<div class="well twitter-stream">
 						{{ topTerms }}
-						<span ng-repeat="status in statuses" class="status"> {{ status }}</span>
+						<span ng-repeat="status in statuses track by $index" class="status"> {{ status }}</span>
 					</div>
 				</div>
 				<div class="col-lg-3" ng-controller="TopTerms">
 					<h3>Top Terms</h3>
-					<ol>
-						<li ng-repeat="term in topTerms">
-							{{ term[0] }} <span class="badge pull-right">{{ term[1] }}</span>			
-						</li>
-					</ol>
+					<div class="well">
+						<ol>
+							<li ng-repeat="term in topTerms">
+								{{ term[0] }} <span class="badge pull-right">{{ term[1] }}</span>			
+							</li>
+						</ol>						
+					</div>
 				</div>
 			</div>
 		</div>
-
 		<script src="angular/angular.js"></script>
 		<script src="jquery/dist/jquery.js"></script>
 		<script src="bootstrap/dist/js/bootstrap.js"></script>
