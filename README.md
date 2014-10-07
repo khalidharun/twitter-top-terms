@@ -8,3 +8,18 @@ Instructions
 1. Run Tests: `npm test`
 1. Start Server: `npm start`
 1. Open app on browser: http://localhost:9000
+
+Tests
+------
+
+`npm run test-server'
+---------------------
+
+backend tests are run using jasmine-node.  This is a simple test to make sure the logic of calculating the top terms is correct.
+
+
+`npm run test-client'
+---------------------
+The client side code test are run using Karma.  These test make sure the AngularJS controllers logic is correct.
+
+
