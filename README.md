@@ -1,18 +1,29 @@
 # twitter-top-terms
 
-Tabulates the top terms form a Twitter Stream.  This app is build with AngularJS and Node.js.
+Tabulates the top terms form a Twitter Stream.  This app is build with AngularJS and Node.js.  Tests are run using `jasmine-node` for backend and `karma` for front-end.
 
-## Installation
+## Step 1: Requirements
+
+You'll need to have `nodejs` and `npm` installed on your machine.  You should also have the following npm packages installed globally:
+- `bower` 
+- `karma` 
+- `jasmine-node`
+
+If you don't already, then just run:
+
+`npm install -g bower karma jasmine-node`
+
+## Step 2: Installation
+
+Open up your terminal to your working directory where you want to install the app and run the following commands.
 
 ```
 git clone https://github.com/khalidharun/twitter-top-terms.git
 cd twitter-top-terms
-npm install
-bower install
-
+npm run build
 ```
 
-## Configuration
+## Step 3: Configuration
 
 In order for this Twitter stream to function, you will need a Twitter API keys.  Make a config.js in the main directory based on config-example.js and fill it in with your API keys.
 
@@ -27,13 +38,13 @@ var config = {
 module.exports = config;
 ```
 
-## Run
+## Step 4: Run
 
 ### `npm start`
 
 App will be accessable through your brower at http://localhost:9000
 
-## Tests
+## Step 5: Tests
 
 ### `npm run test-server`
 
